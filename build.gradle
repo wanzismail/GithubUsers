@@ -1,0 +1,119 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.versions = [
+            'kotlin'                : '1.4.32',
+            'coroutines'            : '1.3.3',
+            'gradle'                : '4.1.3',
+
+            // Android SDK version
+            'minSdk'                : 23,
+            'compileSdk'            : 30,
+            'targetSdk'             : 30,
+            'buildTools'            : '30.0.3',
+            'sourceCompat'          : JavaVersion.VERSION_1_8,
+            'targetCompat'          : JavaVersion.VERSION_1_8,
+            'appCompat'             : '1.2.0',
+            'androidX'              : '1.0.0',
+            'material'              : '1.3.0',
+            'constraintLayout'      : '2.0.0',
+            'gson'                  : '2.8.5',
+            'dagger'                : '2.23.2',
+            'glide'                 : '4.11.0',
+            'glideToVector'         : 'v2.0.0',
+            'rxJava'                : '2.2.17',
+            'rxAndroid'             : '2.1.1',
+            'lifecycle'             : '2.2.0',
+            'materialMetric'        : '2.0.2',
+            'androidKtx'            : '1.3.1',
+            'timber'                : '4.7.1',
+            'room'                  : '2.2.5',
+            'retrofit'              : '2.6.4',
+            'okHttp'                : '3.12.10',
+            'swipeRefreshLayout'    : '1.0.0',
+            'dataStore'             : '1.0.0',
+            'lifecycleKtx'          : '2.3.1',
+            'junit'                 : '4.12',
+            'extJunit'              : '1.1.1',
+            'espressoCore'          : '3.1.0'
+    ]
+
+    ext.deps = [
+            androidX     : [
+                    'appCompat'       : "androidx.appcompat:appcompat:${versions.appCompat}",
+                    'constraintLayout': "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                    'roomRuntime'     : "androidx.room:room-runtime:${versions.room}",
+                    'roomCompiler'    : "androidx.room:room-compiler:${versions.room}",
+                    'roomTesting'     : "androidx.room:room-testing:${versions.room}",
+                    'dataStore'       : "androidx.datastore:datastore-preferences:${versions.dataStore}"
+            ],
+            google       : [
+                    'material'            : "com.google.android.material:material:${versions.material}",
+                    'gson'                : "com.google.code.gson:gson:${versions.gson}",
+                    'swipeRefreshLayout'  : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefreshLayout}",
+                    'dagger'              : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerCompiler'      : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'daggerAndroid'       : "com.google.dagger:dagger-android:${versions.dagger}",
+                    'daggerAndroidSupport': "com.google.dagger:dagger-android-support:${versions.dagger}",
+                    'daggerProcessor'     : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            ],
+            kotlin       : [
+                    'jdk'              : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                    'core'             : "androidx.core:core-ktx:${versions.androidKtx}"
+            ],
+            lifecycle    : [
+                    'extensions'      : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+                    'compiler'        : "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}",
+                    'runtime'         : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
+                    'viewModelKtx'    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycleKtx}",
+                    'liveDataKtx'     : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycleKtx}"
+            ],
+            test         : [
+                    'junit'        : "junit:junit:${versions.junit}",
+                    'extJunit'     : "androidx.test.ext:junit:${versions.extJunit}",
+                    'espressoCore' : "androidx.test.espresso:espresso-core:${versions.espressoCore}"
+            ],
+            utils        : [
+                    'glide'                    : "com.github.bumptech.glide:glide:${versions.glide}",
+                    'glideCompiler'            : "com.github.bumptech.glide:compiler:${versions.glide}",
+                    'glideToVector'            : "com.github.corouteam:GlideToVectorYou:${versions.glideToVector}",
+                    'timber'                   : "com.jakewharton.timber:timber:${versions.timber}",
+                    'materialMetric'           : "com.github.thekhaeng:material-design-metric:${versions.materialMetric}"
+            ],
+            network      : [
+                    'okHttp'                  : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
+                    'okHttpLoggingInterceptor': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
+                    'retrofit2'               : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'retrofit2ConverterGson'  : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'retrofit2AdapterRxJava2' : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+            ]
+    ]
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath "com.android.tools.build:gradle:${versions.gradle}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

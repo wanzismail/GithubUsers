@@ -1,0 +1,106 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    buildToolsVersion versions.buildTools
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        applicationId "id.wanztudio.githubusers"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+        buildConfigField "String", "ACCESS_TOKEN", "\"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\""
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.targetCompat
+    }
+
+    kotlinOptions {
+        jvmTarget = versions.targetCompat
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation deps.kotlin.jdk
+    implementation deps.kotlin.core
+
+    // Android
+    implementation deps.androidX.appCompat
+    implementation deps.androidX.constraintLayout
+
+    // Google Library
+    implementation deps.google.material
+    implementation deps.google.swipeRefreshLayout
+    implementation deps.google.gson
+
+    // Lifecycle (ViewModel + LiveData)
+    implementation deps.lifecycle.extensions
+    kapt deps.lifecycle.compiler
+    implementation deps.lifecycle.runtime
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+
+    // Room Components
+    implementation deps.androidX.roomRuntime
+    kapt deps.androidX.roomCompiler
+    androidTestImplementation deps.androidX.roomTesting
+
+    // Dagger
+    implementation deps.google.dagger
+    kapt deps.google.daggerCompiler
+    implementation deps.google.daggerAndroid
+    implementation deps.google.daggerAndroidSupport
+    kapt deps.google.daggerProcessor
+
+    // Networking Library
+    implementation deps.network.okHttp
+    implementation(deps.network.retrofit2) {
+        exclude group: 'com.squareup.okhttp3'
+    }
+    implementation deps.network.retrofit2ConverterGson
+    implementation deps.network.retrofit2AdapterRxJava2
+    implementation deps.network.okHttpLoggingInterceptor
+
+    // Image loader library
+    implementation deps.utils.glide
+    kapt deps.utils.glideCompiler
+    implementation deps.utils.glideToVector
+
+    // Utils
+    implementation deps.utils.materialMetric
+    implementation deps.utils.timber
+
+    // Data Store
+    implementation deps.androidX.dataStore
+
+    // Testing
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.extJunit
+    androidTestImplementation deps.test.espressoCore
+}

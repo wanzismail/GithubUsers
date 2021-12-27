@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.detail.UserDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Theme.App.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@style/TextStyle"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:scaleType="centerCrop"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="95dp"
+                android:layout_marginStart="30dp"
+                android:layout_width="@dimen/photo_big_size"
+                android:src="@drawable/photo_placeholder"
+                android:layout_height="@dimen/photo_big_size"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ridwan Ismail"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="50dp"
+                android:layout_marginStart="30dp"
+                android:textSize="28sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.App.PopupOverlay" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/include_content"
+        layout="@layout/user_detail_content" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

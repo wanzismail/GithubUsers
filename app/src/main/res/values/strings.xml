@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Github Users</string>
+
+    <string name="search_hint_caption">Search Username</string>
+    <string name="no_connection_message_caption">No internet connection.</string>
+    <string name="empty_data_message_caption">Data not found.</string>
+    <string name="failed_fetch_data_caption">Failed to load data!</string>
+
+    <string name="add_to_favorite">Add to Favorite</string>
+    <string name="remove_from_favorite">Remove from Favorite</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+
+    <string name="follower_title">Followers</string>
+    <string name="following_title">Following</string>
+</resources>
